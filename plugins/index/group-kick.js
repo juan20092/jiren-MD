@@ -12,7 +12,6 @@ let handler = async (m, { conn, usedPrefix, command, participants, isAdmin, isBo
   const groupMetadata = await conn.groupMetadata(m.chat)
   const participantsData = groupMetadata.participants || []
   const botJid = conn.user?.jid || ''
-  const owner = participantsData.find(p => p.admin === 'superadmin')
   const admins = participantsData.filter(p => ['admin', 'superadmin'].includes(p.admin)).map(p => p.id)
 
   if (target === botJid) return m.reply('⚠️ 𝐍𝐎 𝐏𝐔𝐄𝐃𝐎 𝐄𝐗𝐏𝐔𝐋𝐒𝐀𝐑𝐌𝐄 𝐀 𝐌𝐈 𝐌𝐈𝐒𝐌𝐎.\n> 𝐄𝐒𝐂𝐀𝐍𝐎𝐑 𝐁𝐎𝐓 🔱')
@@ -28,7 +27,7 @@ let handler = async (m, { conn, usedPrefix, command, participants, isAdmin, isBo
 
 handler.help = ['kick @usuario', 'kick (responde a un mensaje)']
 handler.tags = ['group']
-handler.command = ['kick', 'ban', 'hechar']
+handler.command = ['kick', 'ban', 'echar']
 handler.admin = true
 handler.group = true
 handler.botAdmin = true
